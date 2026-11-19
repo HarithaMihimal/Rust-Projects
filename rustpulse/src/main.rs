@@ -8,8 +8,15 @@ fn main() {
     let cli = Cli::parse();
 
     match cli.command {
-        Commands::Test => {
-            println!("Running API load testing...");
+        Commands::Test {
+            url,
+            requests,
+            concurrency,
+        } => {
+            println!("Starting RustPulse...");
+            println!("Target URL: {}", url);
+            println!("Total Requests: {}", requests);
+            println!("Concurrency: {}", concurrency);
         }
 
         Commands::Report => {

@@ -13,7 +13,19 @@ pub struct Cli {
 #[derive(Subcommand)]
 pub enum Commands {
     /// Run API load testing
-    Test,
+    Test {
+        /// Target API URL
+        #[arg(long)]
+        url: String,
+
+        /// Total number of requests
+        #[arg(long, default_value_t = 1000)]
+        requests: u32,
+
+        /// Number of concurrent requests
+        #[arg(long, default_value_t = 10)]
+        concurrency: u32,
+    },
 
     /// View previous test reports
     Report,
